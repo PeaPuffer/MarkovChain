@@ -49,8 +49,8 @@ def make_chains(text_string):
     for idx in range(len(words) - 2):
         bigram = (words[idx], words[idx + 1])
         
-        print(bigram)
-        print(words[idx], words[idx + 1], words[idx + 2])
+        # print(bigram)
+        # print(words[idx], words[idx + 1], words[idx + 2])
 
     
         if bigram not in chains:
@@ -67,6 +67,41 @@ def make_text(chains):
     words = []
 
     # your code goes here
+    # chain['bigrams'] = [random.choice()]
+    # chains.get(bigrams, 0)
+    
+
+    bigrams = choice(list(chains.keys()))
+    words.append(bigrams[0])
+    words.append(bigrams[1])
+    while True: #set condition
+        next_words = chains[bigrams] 
+        rand_word = choice(next_words)
+        words.append(rand_word)
+        bigrams = (bigrams[1], rand_word)
+
+ 
+    
+    # for bigrams, word_choices in chains.items():
+        # pick_word = choice(word_choices)
+        # new_set = list()
+        # new_set.append(bigrams[0])
+        # new_set.append(bigrams[1])
+        # new_set.append(pick_word)
+        # words.extend(new_set)
+        # # print(words)
+        # bigrams = (bigrams[1], pick_word)
+
+        # for bigrams in chains.items():
+        #     new_set2 = list()
+        #     new_set2.append(bigrams[0])
+        #     new_set2.append(bigrams[1])
+        #     new_set2.append(pick_word)
+        #     words.extend(new_set2)
+           
+        
+
+
 
     return ' '.join(words)
 
